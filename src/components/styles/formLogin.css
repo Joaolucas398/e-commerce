@@ -1,0 +1,49 @@
+form{
+    max-width: 400px;
+    margin:0 auto;
+  }
+
+  label{
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  div{
+    margin-bottom: 15px;
+  }
+
+  input{
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+
+  #submit-button{
+    background: #007bff ;
+    color: aliceblue;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+  }
+
+  #link{
+    display: inline-flex;
+    text-decoration: none;
+  }
+
+  #link p{
+    color: #000;
+    text-decoration: none;
+  }
+
+  #link a{
+    color: #007bff;
+    margin: 4px;
+    text-decoration: none;
+  }
+
+  #error{
+    color: red;
+  }
