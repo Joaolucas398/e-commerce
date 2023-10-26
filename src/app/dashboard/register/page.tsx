@@ -1,6 +1,5 @@
 import { UserRegistrationForm } from "@/components/formRegister";
 import React from "react";
-// import "./style.css";
 
 export default function Home() {
   return (

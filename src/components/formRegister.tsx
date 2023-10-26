@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import "./styles/formRegister.css"
+import "./styles/formRegister"
+import { ErrorText, Form, FormGroup, Input, Label, SubmitButton } from "./styles/formRegister";
 
 interface IFormData {
   name: string;
@@ -36,186 +37,183 @@ export const UserRegistrationForm = () => {
   const [password, setPassword] = useState("");
 
   return (
-<form onSubmit={handleSubmit(onSubmit)} className="form-grid">
-  <div className="form-group">
-    <label>Nome completo:</label>
-    <input
-      type="text"
-      placeholder="Nome"
-      {...register("name", {
-        required: "Nome é obrigatório",
-        pattern: {
-          value: /^[A-Za-zÀ-ú ]+$/i,
-          message: "Nome inválido",
-        },
-        minLength: 3,
-      })}
-    />
-    <p id="error">{errors.name?.message}</p>
-  </div>
+    <Form onSubmit={handleSubmit(onSubmit)} className="form-grid">
+      <FormGroup>
+        <Label>Nome completo:</Label>
+        <Input
+          type="text"
+          placeholder="Nome"
+          {...register("name", {
+            required: "Nome é obrigatório",
+            pattern: {
+              value: /^[A-Za-zÀ-ú ]+$/i,
+              message: "Nome inválido",
+            },
+            minLength: 3,
+          })}
+        />
+        <ErrorText>{errors.name?.message}</ErrorText>
+      </FormGroup>
 
-  <div className="form-group">
-    <label>E-mail:</label>
-    <input
-      type="email"
-      placeholder="Email@register.com"
-      {...register("email", {
-        required: "Email é obrigatório",
-        pattern: {
-          value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-          message: "E-mail inválido (deve conter @ e .)",
-        },
-      })}
-    />
-    <p id="error">{errors.email?.message}</p>
-  </div>
+      <FormGroup>
+        <Label>E-mail:</Label>
+        <Input
+          type="email"
+          placeholder="Email@register.com"
+          {...register("email", {
+            required: "Email é obrigatório",
+            pattern: {
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+              message: "E-mail inválido (deve conter @ e .)",
+            },
+          })}
+        />
+        <ErrorText>{errors.email?.message}</ErrorText>
+      </FormGroup>
 
-  <div className="form-group">
-    <label>Telefone:</label>
-    <input
-      type="tel"
-      id="telefone"
-      placeholder="(00) 00000-0000"
-      {...register("phone", {
-        required: "Telefone é obrigatório",
-        pattern: {
-          value: /^\d{11}$/i,
-          message: "Telefone inválido (ex: 1234567890)",
-        },
-      })}
-    />
-    <p id="error">{errors.phone?.message}</p>
-  </div>
+      <FormGroup>
+        <Label>Telefone:</Label>
+        <Input
+          type="tel"
+          id="telefone"
+          placeholder="(00) 00000-0000"
+          {...register("phone", {
+            required: "Telefone é obrigatório",
+            pattern: {
+              value: /^\d{11}$/i,
+              message: "Telefone inválido (ex: 1234567890)",
+            },
+          })}
+        />
+        <ErrorText>{errors.phone?.message}</ErrorText>
+      </FormGroup>
 
-  <div className="form-group">
-    <label>CEP:</label>
-    <input
-      type="text"
-      placeholder="00000000"
-      {...register("cep", {
-        required: "CEP é obrigatório",
-        pattern: {
-          value: /^\d{8}$/i,
-          message: "CEP inválido (ex: 12345678)",
-        },
-      })}
-    />
-    <p id="error">{errors.cep?.message}</p>
-  </div>
+      <FormGroup>
+        <Label>CEP:</Label>
+        <Input
+          type="text"
+          placeholder="00000000"
+          {...register("cep", {
+            required: "CEP é obrigatório",
+            pattern: {
+              value: /^\d{8}$/i,
+              message: "CEP inválido (ex: 12345678)",
+            },
+          })}
+        />
+        <ErrorText>{errors.cep?.message}</ErrorText>
+      </FormGroup>
 
-  <div className="form-group">
-    <label>Estado:</label>
-    <input
-      type="text"
-      {...register("estado", {
-        required: "Estado é obrigatório",
-      })}
-    />
-    <p id="error">{errors.estado?.message}</p>
-  </div>
+      <FormGroup>
+        <Label>Estado:</Label>
+        <Input
+          type="text"
+          {...register("estado", {
+            required: "Estado é obrigatório",
+          })}
+        />
+        <ErrorText>{errors.estado?.message}</ErrorText>
+      </FormGroup>
 
-  <div className="form-group">
-    <label>Cidade:</label>
-    <input
-      type="text"
-      {...register("cidade", {
-        required: "Cidade é obrigatória",
-      })}
-    />
-    <p id="error">{errors.cidade?.message}</p>
-  </div>
+      <FormGroup>
+        <Label>Cidade:</Label>
+        <Input
+          type="text"
+          {...register("cidade", {
+            required: "Cidade é obrigatória",
+          })}
+        />
+        <ErrorText>{errors.cidade?.message}</ErrorText>
+      </FormGroup>
 
-  <div className="form-group">
-    <label>Logradouro:</label>
-    <input
-      type="text"
-      {...register("logradouro", {
-        required: "Logradouro é obrigatório",
-      })}
-    />
-    <p id="error">{errors.logradouro?.message}</p>
-  </div>
+      <FormGroup>
+        <Label>Logradouro:</Label>
+        <Input
+          type="text"
+          {...register("logradouro", {
+            required: "Logradouro é obrigatório",
+          })}
+        />
+        <ErrorText>{errors.logradouro?.message}</ErrorText>
+      </FormGroup>
 
-  <div className="form-group">
-    <label>Rua:</label>
-    <input
-      type="text"
-      {...register("rua", {
-        required: "Rua é obrigatório",
-      })}
-    />
-    <p id="error">{errors.rua?.message}</p>
-  </div>
+      <FormGroup>
+        <Label>Rua:</Label>
+        <Input
+          type="text"
+          {...register("rua", {
+            required: "Rua é obrigatório",
+          })}
+        />
+        <ErrorText>{errors.rua?.message}</ErrorText>
+      </FormGroup>
 
-  <div className="form-group">
-    <label>Número:</label>
-    <input
-      type="number"
-      {...register("numero", {
-        required: "Número é obrigatório",
-        pattern: {
-          value: /^\d+$/i,
-          message: "Apenas números (ex: 12345)",
-        },
-      })}
-    />
-    <p id="error">{errors.numero?.message}</p>
-  </div>
+      <FormGroup>
+        <Label>Número:</Label>
+        <Input
+          type="number"
+          {...register("numero", {
+            required: "Número é obrigatório",
+            pattern: {
+              value: /^\d+$/i,
+              message: "Apenas números (ex: 12345)",
+            },
+          })}
+        />
+        <ErrorText>{errors.numero?.message}</ErrorText>
+      </FormGroup>
 
-  <div className="form-group">
-    <label>Complemento:</label>
-    <input type="text" {...register("complemento")} />
-    <p id="error">{errors.complemento?.message}</p>
-  </div>
+      <FormGroup>
+        <Label>Complemento:</Label>
+        <Input type="text" {...register("complemento")} />
+        <ErrorText>{errors.complemento?.message}</ErrorText>
+      </FormGroup>
 
-  <div className="form-group">
-    <label>Bairro:</label>
-    <input
-      type="text"
-      {...register("bairro", {
-        required: "Bairro é obrigatório",
-      })}
-    />
-    <p id="error">{errors.bairro?.message}</p>
-  </div>
+      <FormGroup>
+        <Label>Bairro:</Label>
+        <Input
+          type="text"
+          {...register("bairro", {
+            required: "Bairro é obrigatório",
+          })}
+        />
+        <ErrorText>{errors.bairro?.message}</ErrorText>
+      </FormGroup>
 
-  <div className="form-group">
-    <label>Senha:</label>
-    <input
-      type="password"
-      {...register("password", {
-        required: "Senha é obrigatória",
-        pattern: {
-          value:
-            /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&\[\]{}()\\/^$|<>#%^+=_,;:'"\\-]*$/,
-          message:
-            "Senha deve conter pelo menos 1 maiúsculo, 1 número, 1 caractere especial e ter no mínimo 8 caracteres",
-        },
-      })}
-      onChange={(e) => setPassword(e.target.value)}
-    />
-    <p id="error">{errors.password?.message}</p>
-  </div>
+      <FormGroup>
+        <Label>Senha:</Label>
+        <Input
+          type="password"
+          {...register("password", {
+            required: "Senha é obrigatória",
+            pattern: {
+              value:
+                /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&\[\]{}()\\/^$|<>#%^+=_,;:'"\\-]*$/,
+              message:
+                "Senha deve conter pelo menos 1 maiúsculo, 1 número, 1 caractere especial e ter no mínimo 8 caracteres",
+            },
+          })}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <ErrorText>{errors.password?.message}</ErrorText>
+      </FormGroup>
 
-  <div className="form-group">
-    <label>Confirmação de Senha:</label>
-    <input
-      type="password"
-      {...register("confirmPassword", {
-        required: "Confirmação de senha é obrigatória",
-        validate: (value) =>
-          value === password || "As senhas não coincidem",
-      })}
-    />
-    <p id="error">{errors.confirmPassword?.message}</p>
-  </div>
+      <FormGroup>
+        <Label>Confirmação de Senha:</Label>
+        <Input
+          type="password"
+          {...register("confirmPassword", {
+            required: "Confirmação de senha é obrigatória",
+            validate: (value) =>
+              value === password || "As senhas não coincidem",
+          })}
+        />
+        <ErrorText>{errors.confirmPassword?.message}</ErrorText>
+      </FormGroup>
 
-  <div className="form-group">
-    <button id="submit-button" type="submit">
-      Cadastrar
-    </button>
-  </div>
-</form>
-
+      <FormGroup>
+        <SubmitButton type="submit">Cadastrar</SubmitButton>
+      </FormGroup>
+    </Form>
   );
 };

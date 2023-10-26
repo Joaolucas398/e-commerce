@@ -1,6 +1,7 @@
 "use client";
 import { useForm, SubmitHandler } from "react-hook-form";
-import "./styles/formLogin.css";
+import "./styles/formLogin";
+import { Div, ErrorText, Form, Input, Label, Link, LinkA, LinkP, SubmitButton } from "./styles/formLogin";
 interface IFormData {
   email: string;
   password: string;
@@ -21,11 +22,11 @@ export const UserLoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <Form onSubmit={handleSubmit(onSubmit)}>
       <h1>Login</h1>
-      <div>
-        <label>E-mail:</label>
-        <input
+      <Div>
+        <Label>E-mail:</Label>
+        <Input
           type="email"
           placeholder="Email@register.com"
           {...register("email", {
@@ -36,12 +37,12 @@ export const UserLoginForm = () => {
             },
           })}
         />
-        <p id="error">{errors.email?.message}</p>
-      </div>
+        <ErrorText>{errors.email?.message}</ErrorText>
+      </Div>
 
-      <div>
-        <label>Senha:</label>
-        <input
+      <Div>
+        <Label>Senha:</Label>
+        <Input
           type="password"
           {...register("password", {
             required: "Senha é obrigatória",
@@ -54,17 +55,15 @@ export const UserLoginForm = () => {
           })}
         />
 
-        <p id="error">{errors.password?.message}</p>
-      </div>
-      <div>
-        <button id="submit-button" type="submit">
-          Entrar
-        </button>
-      </div>
-      <div id="link">
-        <p>Se ainda não é cadastrado?</p>
-        <a href="/register">clique aqui.</a>
-      </div>
-    </form>
+        <ErrorText>{errors.password?.message}</ErrorText>
+      </Div>
+      <Div>
+        <SubmitButton type="submit">Entrar</SubmitButton>
+      </Div>
+      <Link>
+        <LinkP>Se ainda não é cadastrado?</LinkP>
+        <LinkA href="/register">clique aqui.</LinkA>
+      </Link>
+    </Form>
   );
 };

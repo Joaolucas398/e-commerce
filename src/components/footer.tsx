@@ -1,23 +1,10 @@
+"use client";
 import * as React from "react";
-
+import "./styles/footer"
 export default function Footer() {
   return (
     <>
-      <footer
-        style={{
-          display: "grid",
-          width: "100%",
-          gridAutoFlow: "row dense",
-          placeItems: "center",
-          textAlign: "center",
-          columnGap: "1rem",
-          rowGap: "2.5rem",
-          fontSize: ".875rem",
-          lineHeight: "1.25rem",
-          backgroundColor: "#2F2E2E",
-          bottom: "0",
-        }}
-      >
+      <footer>
         <nav className="grid grid-flow-col gap-4" style={{ cursor: "pointer" }}>
           <a className="link link-hover">Home</a>
           <a className="link link-hover">Blog</a>
